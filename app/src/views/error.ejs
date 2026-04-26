@@ -1,0 +1,15 @@
+<div class="max-w-3xl mx-auto px-4 py-12 text-center">
+  <h1 class="text-4xl font-extrabold text-[var(--color-text-primary)] mb-4">
+    <%= statusCode || 500 %>
+  </h1>
+  <p class="text-lg text-[var(--color-text-secondary)] mb-8">
+    <%= message %>
+  </p>
+  <a href="<%= CONFIG.routes.home %>" class="inline-flex items-center justify-center px-6 py-3 rounded-[var(--radius-lg)] text-white font-semibold bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition" style="box-shadow: var(--shadow-soft);">
+    Volver al inicio
+  </a>
+
+  <% if (stack) { %>
+    <pre class="mt-8 text-left text-xs bg-gray-100 p-4 rounded-[var(--radius-lg)] overflow-auto text-gray-700"><%= stack %></pre>
+  <% } %>
+</div>

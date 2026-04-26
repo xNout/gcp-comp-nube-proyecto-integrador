@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - <%= MESSAGES.app.title %></title>
+  <link rel="stylesheet" href="/css/output.css">
+  <style>
+    :root {
+      --color-bg-primary: <%= THEME.colors.backgroundPrimary %>;
+      --color-bg-secondary: <%= THEME.colors.backgroundSecondary %>;
+      --color-primary: <%= THEME.colors.primary %>;
+      --color-primary-hover: <%= THEME.colors.primaryHover %>;
+      --color-accent: <%= THEME.colors.accent %>;
+      --color-text-primary: <%= THEME.colors.textPrimary %>;
+      --color-text-secondary: <%= THEME.colors.textSecondary %>;
+      --color-border-soft: <%= THEME.colors.borderSoft %>;
+      --color-success: <%= THEME.colors.success %>;
+      --color-error: <%= THEME.colors.error %>;
+      --font-sans: <%= THEME.fonts.sans %>;
+      --radius-sm: <%= THEME.borderRadius.sm %>;
+      --radius-md: <%= THEME.borderRadius.md %>;
+      --radius-lg: <%= THEME.borderRadius.lg %>;
+      --radius-xl: <%= THEME.borderRadius.xl %>;
+      --shadow-soft: <%= THEME.shadows.soft %>;
+      --shadow-card: <%= THEME.shadows.card %>;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-bg-primary);
+      color: var(--color-text-primary);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="bg-white border-b border-[var(--color-border-soft)]">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="<%= CONFIG.routes.home %>" class="text-xl font-bold text-[var(--color-primary)]">
+        <%= MESSAGES.app.title %>
+      </a>
+      <nav class="flex gap-4">
+        <a href="<%= CONFIG.routes.home %>" class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition">
+          <%= MESSAGES.home.pageTitle %>
+        </a>
+        <a href="<%= CONFIG.routes.upload %>" class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition">
+          <%= MESSAGES.upload.pageTitle %>
+        </a>
+        <a href="<%= CONFIG.routes.evidences %>" class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition">
+          <%= MESSAGES.evidences.pageTitle %>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <%- body %>
+  </main>
+
+  <footer class="bg-white border-t border-[var(--color-border-soft)] mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-[var(--color-text-secondary)]">
+      <%= MESSAGES.app.title %> - Google Cloud Platform
+    </div>
+  </footer>
+</body>
+</html>

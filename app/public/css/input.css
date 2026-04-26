@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-warm-ivory: #FFF7ED;
+  --color-soft-cream: #FFEDD5;
+  --color-warm-orange: #EA580C;
+  --color-deep-orange: #C2410C;
+  --color-amber: #F59E0B;
+  --color-warm-slate: #1F2937;
+  --color-muted-brown: #6B4F3A;
+  --color-sand: #FDBA74;
+  --color-soft-green: #16A34A;
+  --color-warm-red: #DC2626;
+}
+
+body {
+  background-color: var(--color-bg-primary, #FFF7ED);
+}

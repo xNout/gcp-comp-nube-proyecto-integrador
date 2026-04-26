@@ -1,0 +1,57 @@
+<div class="max-w-5xl mx-auto px-4 py-12">
+  <h1 class="text-3xl font-bold text-[var(--color-text-primary)] mb-8 text-center">
+    <%= MESSAGES.evidences.heading %>
+  </h1>
+
+  <% if (error) { %>
+    <div class="mb-6 p-4 rounded-[var(--radius-lg)] bg-red-50 border border-red-200 text-[var(--color-error)]">
+      <%= error %>
+    </div>
+  <% } %>
+
+  <% if (!files || files.length === 0) { %>
+    <div class="text-center py-16 bg-white rounded-[var(--radius-xl)] border border-[var(--color-border-soft)]" style="box-shadow: var(--shadow-card);">
+      <p class="text-[var(--color-text-secondary)] mb-6"><%= MESSAGES.evidences.emptyState %></p>
+      <a href="<%= CONFIG.routes.upload %>" class="inline-flex items-center justify-center px-6 py-3 rounded-[var(--radius-lg)] text-white font-semibold bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition" style="box-shadow: var(--shadow-soft);">
+        <%= MESSAGES.evidences.buttonUploadMore %>
+      </a>
+    </div>
+  <% } else { %>
+    <div class="bg-white rounded-[var(--radius-xl)] border border-[var(--color-border-soft)] overflow-hidden" style="box-shadow: var(--shadow-card);">
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-left text-sm">
+          <thead class="bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] font-semibold">
+            <tr>
+              <th class="px-6 py-4"><%= MESSAGES.evidences.tableName %></th>
+              <th class="px-6 py-4"><%= MESSAGES.evidences.tableSize %></th>
+              <th class="px-6 py-4"><%= MESSAGES.evidences.tableType %></th>
+              <th class="px-6 py-4"><%= MESSAGES.evidences.tableDate %></th>
+              <th class="px-6 py-4 text-right"><%= MESSAGES.evidences.tableAction %></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[var(--color-border-soft)]">
+            <% files.forEach(function(file) { %>
+              <tr class="hover:bg-orange-50 transition">
+                <td class="px-6 py-4 font-medium text-[var(--color-text-primary)]"><%= file.originalName %></td>
+                <td class="px-6 py-4 text-[var(--color-text-secondary)]"><%= formatFileSize(file.size) %></td>
+                <td class="px-6 py-4 text-[var(--color-text-secondary)]"><%= file.contentType %></td>
+                <td class="px-6 py-4 text-[var(--color-text-secondary)]"><%= formatDate(file.updatedAt) %></td>
+                <td class="px-6 py-4 text-right">
+                  <a href="<%= CONFIG.routes.evidences %>/<%= encodeURIComponent(file.name) %>/download" class="inline-flex items-center px-4 py-2 rounded-[var(--radius-md)] text-sm font-semibold bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)] transition">
+                    <%= MESSAGES.evidences.buttonDownload %>
+                  </a>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      <a href="<%= CONFIG.routes.upload %>" class="inline-flex items-center justify-center px-6 py-3 rounded-[var(--radius-lg)] text-white font-semibold bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition" style="box-shadow: var(--shadow-soft);">
+        <%= MESSAGES.evidences.buttonUploadMore %>
+      </a>
+    </div>
+  <% } %>
+</div>
